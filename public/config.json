@@ -19,8 +19,12 @@
     },
     "arguments": {
         "execute": {
-            "inArguments": [], 
-            "outArguments": [], 
+            "inArguments": [{"unique_key":  "{{Contact.Attribute.TestMDSDE.unique_key}}",
+                "email_id":    "{{Contact.Attribute.TestMDSDE.email_id}}",
+                "first_name":  "{{Contact.Attribute.TestMDSDE.first_name}}",
+                "last_name":   "{{Contact.Attribute.TestMDSDE.last_name}}"
+                }], 
+            "outArguments": [{"voucher_code":""}], 
             "url": "https://mds-heroku.herokuapp.com/journeybuilder/execute",
             "verb": "POST",
             "body": "", 
@@ -65,6 +69,51 @@
             "height": 700,
             "width": 1000,
             "fullscreen": false
+        }
+    },
+    "schema": {
+        "arguments": {
+          "execute": {
+            "inArguments": [
+              {
+                "unique_key": {
+                  "dataType": "Text",
+                  "isNullable": false,
+                  "direction": "in"
+                }
+              },
+              {
+                "email_id": {
+                  "dataType": "Email",
+                  "isNullable": false,
+                  "direction": "in"
+                }
+              },
+              {
+                "first_name": {
+                  "dataType": "Text",
+                  "isNullable": true,
+                  "direction": "in"
+                }
+              },
+              {
+                "last_name": {
+                  "dataType": "Text",
+                  "isNullable": true,
+                  "direction": "in"
+                }
+              }
+            ],
+            "outArguments": [
+                {
+                  "voucher_code": {
+                    "dataType": "Text",
+                    "isNullable": true,
+                    "direction": "in"
+                  }
+                }
+              ]
+            }
         }
     }
 }
