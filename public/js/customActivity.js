@@ -46,12 +46,22 @@ define(['postmonger'], function (Postmonger) {
      * The config.json will be updated here if there are any updates to be done via Front End UI
      */
     function save() {
-        //payload['arguments'].execute.inArguments = [
-           // {
-           // }
-        //];
-        payload['metaData'].isConfigured = true;
+        var email_id;
+        var first_name;
+        var last_name;
+
+        payload['arguments'].execute.inArguments = [{
+            "email_id": "{{Contact.Attribute."+ eventDefinitionKey+".\"email_id\"}}",
+            "first_name": "{{Contact.Attribute." + eventDefinitionKey+".\"first_name\"}}",
+            "last_name": "{{Contact.Attribute." + eventDefinitionKey+".\"last_name\"}}"
+        }];
         console.log(payload);
+        
+        $('#first_name').val(first_name);
+        $('#email_id').val(email_id);
+        $('#last_name').val(last_name);
+
+        payload['metaData'].isConfigured = true;
         connection.trigger('updateActivity', payload);
     }
 
