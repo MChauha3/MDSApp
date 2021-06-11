@@ -29,7 +29,7 @@ define(['postmonger'], function (Postmonger) {
     connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
         if (eventDefinitionModel) {
             eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
-            // console.log('Request Trigger >>>', JSON.stringify(eventDefinitionModel));
+             console.log('Request Trigger >>>', JSON.stringify(eventDefinitionModel));
         }
     });
 
@@ -55,8 +55,8 @@ define(['postmonger'], function (Postmonger) {
             "first_name": "{{Contact.Attribute." + eventDefinitionKey+".\"first_name\"}}",
             "last_name": "{{Contact.Attribute." + eventDefinitionKey+".\"last_name\"}}"
         }];
-        console.log(payload);
-        
+        console.log('test payload'+payload);
+
         $('#first_name').val(first_name);
         $('#email_id').val(email_id);
         $('#last_name').val(last_name);
