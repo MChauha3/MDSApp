@@ -46,7 +46,7 @@ define(['postmonger'], function (Postmonger) {
      * The config.json will be updated here if there are any updates to be done via Front End UI
      */
     function save() {
-        var email_id;
+       /* var email_id;
         var first_name;
         var last_name;
 
@@ -59,8 +59,8 @@ define(['postmonger'], function (Postmonger) {
 
         $('#first_name').val(first_name);
         $('#email_id').val(email_id);
-        $('#last_name').val(last_name);
-
+        $('#last_name').val(last_name);*/
+        console.log('test payload'+JSON.stringify(payload));
         payload['metaData'].isConfigured = true;
         connection.trigger('updateActivity', payload);
     }
