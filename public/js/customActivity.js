@@ -55,7 +55,7 @@ define(['postmonger'], function (Postmonger) {
             "first_name": "{{Contact.Attribute." + eventDefinitionKey+".\"first_name\"}}",
             "last_name": "{{Contact.Attribute." + eventDefinitionKey+".\"last_name\"}}"
         }];
-        console.log('test payload'+payload);
+        console.log('test payload'+JSON.stringify(payload));
 
         $('#first_name').val(first_name);
         $('#email_id').val(email_id);
@@ -74,7 +74,26 @@ define(['postmonger'], function (Postmonger) {
      * If there are information present, it should be loaded back into the appropriate places. 
      * e.g. input fields, select lists
      */
-    function initialLoad(data) {};
+    function initialLoad(data) {
+        var hasInArguments = Boolean(
+            payload['arguments'] &&
+            payload['arguments'].execute &&
+            payload['arguments'].execute.inArguments &&
+            payload['arguments'].execute.inArguments.length > 0
+        );
+
+        var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
+        $.each(inArguments, function (index, inArgument) {
+            $.each(inArgument, function (key, val) {
+                $('#'+key).val(val);  
+            });
+        });
+        connection.trigger('updateButton', {
+            button: 'next',
+            text: 'done',
+            visible: true
+        });
+    };
 
 
     /**
