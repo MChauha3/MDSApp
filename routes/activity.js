@@ -83,6 +83,8 @@ exports.execute = function (req, res) {
         }
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
+            var token = retrieveToken();
+            console.log('access token'+token);
             console.log('##### decoded ####=>', decoded);
             res.send(200, 'Execute');
         } else {
