@@ -60,6 +60,13 @@ define(['postmonger'], function (Postmonger) {
         $('#first_name').val(first_name);
         $('#email_id').val(email_id);
         $('#last_name').val(last_name);*/
+        var firstName = $('#first_name').val();
+        var lastName = $('#last_name').val();
+        var voucherCode = firstName + '' + lastName + '12345';
+
+        payload['arguments'].execute.outArguments = [{
+            "voucher_code": voucherCode
+        }];
         console.log('test payload'+JSON.stringify(payload));
         payload['metaData'].isConfigured = true;
         connection.trigger('updateActivity', payload);
