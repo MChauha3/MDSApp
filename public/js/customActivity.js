@@ -64,9 +64,9 @@ define(['postmonger'], function (Postmonger) {
         var lastName = $('#last_name').val();
         var voucherCode = firstName + '' + lastName + '12345';
 
-        payload['arguments'].execute.outArguments = [{
+       /* payload['arguments'].execute.outArguments = [{
             "voucher_code": voucherCode
-        }];
+        }];*/
         console.log('test payload'+JSON.stringify(payload));
         payload['metaData'].isConfigured = true;
         connection.trigger('updateActivity', payload);

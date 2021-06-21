@@ -24,7 +24,7 @@
                 "first_name":  "{{Contact.Attribute.TestMDSDE.first_name}}",
                 "last_name":   "{{Contact.Attribute.TestMDSDE.last_name}}"
                 }], 
-            "outArguments": [{"voucher_code":""}], 
+            "outArguments": [], 
             "url": "https://mds-heroku.herokuapp.com/journeybuilder/execute",
             "verb": "POST",
             "body": "", 
@@ -104,15 +104,7 @@
                 }
               }
             ],
-            "outArguments": [
-                {
-                  "voucher_code": {
-                    "dataType": "Text",
-                    "isNullable": true,
-                    "direction": "in"
-                  }
-                }
-              ]
+            "outArguments": []
             }
         }
     }
