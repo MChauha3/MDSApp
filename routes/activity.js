@@ -81,8 +81,9 @@ exports.execute = function (req, res) {
         client_id: process.env.clientId,
         client_secret: process.env.clientSecret
     })
-    .then(function (response) {
-        token = response.data['access_token'];
+    .then(function (res) {
+        console.log('test###'+res.data);
+        token = res.data['access_token'];
     }).catch(function (error) {
         return error;
     });
