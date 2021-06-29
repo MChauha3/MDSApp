@@ -75,7 +75,17 @@ exports.save = function (req, res) {
  * POST Handler for /execute/ route of Activity.
  */
 exports.execute = function (req, res) {
-    var token = retrieveToken();
+    var token;
+    axios.post(tokenURL, { // Retrieving of token
+        grant_type: 'client_credentials',
+        client_id: process.env.clientId,
+        client_secret: process.env.clientSecret
+    })
+    .then(function (response) {
+        token = response.data['access_token'];
+    }).catch(function (error) {
+        return error;
+    });
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
         // verification error -> unauthorized request
         if (err) {
