@@ -76,17 +76,28 @@ exports.save = function (req, res) {
  */
 exports.execute = function (req, res) {
     var token;
-    axios.post(tokenURL, { // Retrieving of token
-        grant_type: 'client_credentials',
-        client_id: process.env.clientId,
-        client_secret: process.env.clientSecret
-    })
-    .then(function (res) {
-        console.log('test###'+res.data);
-        token = res.data['access_token'];
-    }).catch(function (error) {
-        return error;
-    });
+    var conData = {
+		'grant_type': 'client_credentials',
+		'client_id': process.env.clientId,
+		'client_secret': process.env.clientSecret
+	}
+	axios({
+		method: 'post',
+		url: tokenURL,
+		data: conData,
+		headers: {
+			'Content-Type': 'application/json',
+		}
+	})
+		.then(function (response) {
+			token = response.data.access_token;
+			console.log(token);
+			//responsefromWeb.send('Authorization Sent');
+
+		}).catch(function (error) {
+			console.log(error);
+			//responsefromWeb.send(error);
+		});
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
         // verification error -> unauthorized request
         if (err) {
