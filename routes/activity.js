@@ -76,7 +76,6 @@ exports.save = function (req, res) {
  */
 exports.execute = function (req, res) {
     var token = retrieveToken();
-    console.log('access token'+token);
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
         // verification error -> unauthorized request
         if (err) {
@@ -86,13 +85,20 @@ exports.execute = function (req, res) {
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
             console.log('##### decoded ####=>', decoded);
-            res.send(200, 'Execute');
+            //res.send(200, 'Execute');
         } else {
             console.error('inArguments invalid.');
             return res.status(400).end();
-        }
+        }       
 
     });
+    if(token){
+        console.log('access token'+token);
+        res.send(200, 'EXEcute');
+    }
+    else{
+        return res.status(400).end();
+    }
 };
 
 
