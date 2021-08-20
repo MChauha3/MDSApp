@@ -93,6 +93,7 @@ exports.execute = function (req, res) {
 			token = response.data.access_token;
 			console.log(token);
 			//responsefromWeb.send('Authorization Sent');
+            //res.send(200, 'EXEcute');
 
 		}).catch(function (error) {
 			console.log(error);
@@ -107,20 +108,20 @@ exports.execute = function (req, res) {
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
             console.log('##### decoded ####=>', decoded);
-            //res.send(200, 'Execute');
+            res.send(200, 'Execute');
         } else {
             console.error('inArguments invalid.');
             return res.status(400).end();
         }       
 
     });
-    if(token){
+    /*if(token){
         console.log('access token'+token);
         res.send(200, 'EXEcute');
     }
     else{
         return res.status(400).end();
-    }
+    }*/
 };
 
 
