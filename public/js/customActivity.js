@@ -37,7 +37,7 @@ define(['postmonger'], function (Postmonger) {
         if (data) {
             payload = data;
         }
-        initialLoad(data);
+        initialLoad(payload);
         //parseEventSchema();
     }
 
@@ -81,7 +81,7 @@ define(['postmonger'], function (Postmonger) {
      * If there are information present, it should be loaded back into the appropriate places. 
      * e.g. input fields, select lists
      */
-    function initialLoad(data) {
+    function initialLoad(payload) {
         var hasInArguments = Boolean(
             payload['arguments'] &&
             payload['arguments'].execute &&
