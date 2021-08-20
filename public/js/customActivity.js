@@ -83,6 +83,7 @@ define(['postmonger'], function (Postmonger) {
         if (data) {
             payload = data;
         }
+        console.log('test payload'+ payload);
         var hasInArguments = Boolean(
             payload['arguments'] &&
             payload['arguments'].execute &&
