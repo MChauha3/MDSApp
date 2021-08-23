@@ -34,7 +34,7 @@ define(['postmonger'], function (Postmonger) {
     });
 
     function initialize(data) {
-        
+        console.log('test data '+ data);
         initialLoad(data);
         //parseEventSchema();
     }
